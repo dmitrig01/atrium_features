@@ -274,7 +274,7 @@ function atrium_comment_thread_toggleform($form_state, $action = 'close', $nid) 
   $form['comment_toggle'] = array(
     '#type' => 'submit',
     '#submit' => array('atrium_comment_thread_toggleform_submit'),
-    '#value' => $action == 'close' ? t('Close comment thread') : t('Reopen comment thread'),
+    '#value' => $action == 'close' ? t('Disable comments') : t('Enable coments'),
   );
   return $form;
 }
