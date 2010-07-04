@@ -201,3 +201,19 @@ function atrium_shoutbox_get_shoutbox($reset = FALSE) {
   }
   return $shoutbox;
 }
+
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ */
+function atrium_shoutbox_form_views_exposed_form_alter(&$form, $form_state) {
+  if ($form_state['view']->name == 'atrium_shoutbox_shouts') {
+    $form['submit']['#value'] = t('Search');
+  }
+}
+
+/**
+ * Implementation of hook_enable().
+ */
+function atrium_shoutbox_enable() {
+  db_query("UPDATE {system} SET weight = %d WHERE name = '%s'", 200, 'atrium_shoutbox');
+}
